@@ -12,6 +12,23 @@ const controllerPsicologos = {
             return res.status(500).json(error.message);
         };
     },
+    async listarPsicologosId(req, res) {
+        try {
+            const {id} = req.params;
+            const listaDePsicologos = await Psicologos.findOne({
+                where: {
+                    id_psicologos: id
+                }
+              });
+            if(listaDePsicologos !== null) res.status(200).json(listaDePsicologos)
+            else res.status(404).json("id não enviado");
+            console.log(listaDePsicologos)
+        } 
+        catch (error) {
+            return res.status(500).json("error.message");
+        };
+    },
 }
+
 
 module.exports = controllerPsicologos;
