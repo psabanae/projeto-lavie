@@ -4,12 +4,6 @@ package.json
 DER.mwb
 lavie.sql
 README.md
-<<<<<<< Updated upstream
-.vscode
-=======
 .vscode 
 src/databse
-databse
->>>>>>> Stashed changes
-src/database/index.js
-package.json
+
