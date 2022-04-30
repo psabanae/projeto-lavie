@@ -11,3 +11,5 @@ README.md
 src/databse
 databse
 >>>>>>> Stashed changes
+src/database/index.js
+package.json
