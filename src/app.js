@@ -3,11 +3,12 @@ const cors = require("cors");
 const routes = require("./routes/pacientes.routes");
 const app = express();
 const db = require("./database");
-const trataErroValidacao = require("./middleware/trataErroValidacao");
+const trataErroValidacao = require("./middleware/handleError");
 
 db.hasConnection();
 app.use(express.json());
 app.use(cors());
+
 app.use(routes);
 app.use(trataErroValidacao);
 

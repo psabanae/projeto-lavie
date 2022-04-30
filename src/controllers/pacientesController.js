@@ -19,6 +19,9 @@ const PacientesController = {
   //Lista paciente por Id
   async recuperar(req, res) {
       const { id } = req.params;
+
+      if(!id) return res.status(400).json("Id não enviada.");
+
       try {
         const paciente = await Pacientes.findOne({
             where: {id_pacientes: id}}
@@ -50,6 +53,9 @@ const PacientesController = {
   async atualizar(req, res) {
     const { id } = req.params;
     const { novo_nome, novo_email, nova_dataNascimento } = req.body;
+
+    if (!id) return res.status(400).json('Id não enviada.');
+
     try {
       const atualizarPaciente = await Pacientes.update(
         { nome: novo_nome,
