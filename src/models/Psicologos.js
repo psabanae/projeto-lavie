@@ -21,12 +21,9 @@ const Psicologos = db.define(
      apresentacao:{
          type: DataTypes.STRING,
      },
-     status:{
-         type: DataTypes.TINYINT
-     },   
     },{
         tableName: "psicologos",
-        timestamps: false,
+        paranoid: true,
     }
 );
 
