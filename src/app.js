@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const psicologosRoutes = require("./routes/psicologosRoutes");
 const pacientesRoutes = require("./routes/pacientes.routes");
 const app = express();
 const db = require("./database");
@@ -9,6 +10,7 @@ db.hasConnection();
 app.use(express.json());
 app.use(cors());
 
+app.use(psicologosRoutes);
 app.use(pacientesRoutes);
 app.use(trataErroValidacao);
 

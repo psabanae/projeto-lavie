@@ -1,1 +1,11 @@
 node_modules
+package-lock.json
+package.json
+DER.mwb
+lavie.sql
+README.md
+.vscode 
+src/databse
+
+src/database/index.js
+
