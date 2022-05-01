@@ -12,9 +12,13 @@ const atendimentosController = {
   },
 
   async listarAtendimentosPorId(req, res) {
-    const idconsulta = req.params["id"];
     try {
-      const listaDeAtendimentos = await Atendimentos.findByPk(idconsulta);
+      const { id } = req.params;
+      const listaDeAtendimentos = await Atendimentos.findOne({
+        where: {
+          id_atendimentos: id,
+        },
+      });
       if (listaDeAtendimentos !== null) {
         res.status(200).json(listaDeAtendimentos);
       } else {
@@ -33,9 +37,10 @@ const atendimentosController = {
   },
 
   async agendarAtendimento(req, res) {
-    const { id_pacientes, data_atendimentos, observacao, id_psicologos } = req.body;
+    const { id_pacientes, data_atendimentos, observacao, id_psicologos } =
+      req.body;
 
-    if (!id_pacientes || !data_atendimentos || !observacao || !id_psicologos ) {
+    if (!id_pacientes || !data_atendimentos || !observacao || !id_psicologos) {
       return res
         .status(400)
         .json(
@@ -47,7 +52,7 @@ const atendimentosController = {
       id_pacientes,
       data_atendimentos,
       observacao,
-      id_psicologos
+      id_psicologos,
     });
 
     res.status(201).json(novoAtendimento);
