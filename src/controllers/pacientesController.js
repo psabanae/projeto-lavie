@@ -33,8 +33,8 @@ const PacientesController = {
 
   //Cadastra paciente
   async cadastrarPacientes(req, res) {
-    const { nome, email, nascimento, status } = req.body;
-    if (!nome || !email || !nascimento || !status) {
+    const { nome, email, nascimento } = req.body;
+    if (!nome || !email || !nascimento) {
       return res
         .status(400)
         .json({ error: "Você precisa passar os atributos corretamente" });
@@ -42,8 +42,7 @@ const PacientesController = {
     const novoPaciente = await Pacientes.create({
       nome,
       email,
-      nascimento,
-      status
+      nascimento
     });
     res.status(201).json(novoPaciente);
   },

@@ -17,14 +17,11 @@ const Pacientes = db.define(
     },
     nascimento: {
       type: DataTypes.DATE
-    },
-    status: {
-      type: DataTypes.TINYINT
     }
   },
   {
     tableName: "pacientes",
-    timestamps: false
+    paranoid: true
   }
 );
 
