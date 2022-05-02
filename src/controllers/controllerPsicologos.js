@@ -62,27 +62,31 @@ const controllerPsicologos = {
     },
     async atualizarPsicologo(req, res) {
         const { id } = req.params;
-       
-            const { nome, email, senha, apresentacao } = req.body   
-            if (!nome || !email || !senha || !apresentacao) {
-                return res
-                    .status(400)
-                    .json({ error: "Você precisa passar os atributos corretamente" });
-            }    
-            const atualizado = await Psicologos.update(
-                {
-                    nome,
-                    email,
-                    senha,
-                    apresentacao
-                }, {
-                    where:{
-                        id_psicologos: id
-                    },
-                }
-            )
-            if(atualizado ==0) return res.status(400).json("id invalido");  
-            res.status(200).json("Psicologo Atualizado");
+       try {
+        const { nome, email, senha, apresentacao } = req.body   
+        if (!nome || !email || !senha || !apresentacao) {
+            return res
+                .status(400)
+                .json({ error: "Você precisa passar os atributos corretamente" });
+        }    
+        const atualizado = await Psicologos.update(
+            {
+                nome,
+                email,
+                senha,
+                apresentacao
+            }, {
+                where:{
+                    id_psicologos: id
+                },
+            }
+        )
+        if(atualizado ==0) return res.status(400).json("id invalido");  
+        res.status(200).json("Psicologo Atualizado");
+       } catch (error) {
+        return res.status(500).json("error.message")
+       }
+            
     },
 };
 module.exports = controllerPsicologos;
