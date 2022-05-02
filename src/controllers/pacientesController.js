@@ -66,7 +66,7 @@ const PacientesController = {
         return res.status(400).json("id invalido");
       }
 
-      return res.status(200).json(atualizarPaciente);
+      return res.status(200).json("Paciente Atualizado");
     } catch (error) {
       return res.status(400).json("Id digitado invalido");
     }
