@@ -27,7 +27,7 @@ const PacientesController = {
 
       return res.status(200).json(paciente);
     } catch (error) {
-      return res.status(500).json("Erro Inesperado");
+      return res.status(404).json("Erro Inesperado");
     }
   },
 
@@ -52,33 +52,40 @@ const PacientesController = {
     const { id } = req.params;
     const { novo_nome, novo_email, nova_dataNascimento } = req.body;
 
-    if (!id) return res.status(400).json("Id não enviada.");
-
+    if (!novo_nome || !novo_email || !nova_dataNascimento) {
+      return res
+        .status(400)
+        .json({ error: "Você precisa passar os atributos corretamente" });
+    }
     try {
-
       const atualizarPaciente = await Pacientes.update(
         { nome: novo_nome, email: novo_email, nascimento: nova_dataNascimento },
         { where: { id_pacientes: id } }
       );
-      return res.status(200).json("Paciente Atualizado");
+      if (atualizarPaciente == 0) {
+        return res.status(400).json("id invalido");
+      }
+
+      return res.status(200).json(atualizarPaciente);
     } catch (error) {
-      return res.status(500).json("Erro Inesperado");
+      return res.status(400).json("Id digitado invalido");
     }
   },
 
   //Deleta paciente
+
   async deletar(req, res) {
-    const { id } = req.params;
-
-    if (!id) return res.status(400).json("Id não enviada.");
-
     try {
-      const deletaPaciente = await Pacientes.destroy({ where: 
-        { id_pacientes: id }}
-      );
-      return res.status(200).json("Paciente Deletado");
+      const { id } = req.params;
+      const deletaPaciente = await Pacientes.destroy({
+        where: {
+          id_pacientes: id
+        }
+      });
+      if (deletaPaciente == 1) res.status(204).json("Paciente apagado");
+      else res.status(404).json("Id não encontrado");
     } catch (error) {
-      return res.status(400).json("Paciente não encontrado.");
+      return res.status(500).json("Ocorreu um erro");
     }
   }
 };
