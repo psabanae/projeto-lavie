@@ -1,5 +1,4 @@
 const Atendimentos = require("../models/Atendimentos");
-console.log(Atendimentos);
 
 const atendimentosController = {
   async listarAtendimentos(req, res) {
@@ -19,12 +18,6 @@ const atendimentosController = {
           id_atendimentos: id,
         },
       });
-      if (listaDeAtendimentos !== null) {
-        res.status(200).json(listaDeAtendimentos);
-      } else {
-        res.status(404).json("Id não informado");
-      }
-      console.log(res);
       if (listaDeAtendimentos) {
         res.status(200).json(listaDeAtendimentos);
       } else {
