@@ -1,20 +1,18 @@
 const Atendimentos = require("../models/Atendimentos");
 
-const atendimentosController = {
+const authController = require("../controllers/authController");
 
+const atendimentosController = {
   async listarAtendimentos(req, res) {
-  
     try {
       const listaDeAtendimentos = await Atendimentos.findAll();
       return res.status(200).json(listaDeAtendimentos);
-  
     } catch (error) {
       return res.status(500).json(error.message);
     }
   },
 
   async listarAtendimentosPorId(req, res) {
-  
     try {
       const { id } = req.params;
       const listaDeAtendimentos = await Atendimentos.findOne({
@@ -26,15 +24,16 @@ const atendimentosController = {
       if (!listaDeAtendimentos) {
         return res.status(404).json("Atendimento não encontrado");
       }
-      
-      return res.status(200).json(listaDeAtendimentos);
 
+      return res.status(200).json(listaDeAtendimentos);
     } catch (error) {
       return res.status(500).json(error.message);
     }
   },
 
   async agendarAtendimento(req, res) {
+    const IdNoToken = req.auth.id;
+
     const { id_pacientes, data_atendimentos, observacao, id_psicologos } =
       req.body;
 
@@ -50,7 +49,7 @@ const atendimentosController = {
       id_pacientes,
       data_atendimentos,
       observacao,
-      id_psicologos,
+      id_psicologos: IdNoToken,
     });
 
     return res.status(201).json(novoAtendimento);
