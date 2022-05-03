@@ -45,7 +45,7 @@ const controllerPsicologos = {
             });
             if (!psicologos) return res.status(404).json("Id não encontrado");
             
-            return res.status(204).json("Psicologo apagado");
+            return res.status(204);
  
 
         } catch (error) {
@@ -58,7 +58,11 @@ const controllerPsicologos = {
 
         try {
             const { nome, email, senha, apresentacao } = req.body;
-
+            const existingUser = 
+            await Psicologos.count({where:{ email }})                 
+        if (existingUser) {
+            return res.status(400).json('Email já está cadastrado')
+        }
             const novaSenha = bcryptjs.hashSync(senha,10)
             const novoPsicologo = await Psicologos.create({
                 nome,
@@ -69,13 +73,8 @@ const controllerPsicologos = {
             res.status(201).json(novoPsicologo);
 
         } catch (error) {
-            if(error.name === 'SequelizeUniqueConstraintError'){
-                return res.status(403).json('E-mail já cadastrado no sistema.');
-            }
-            return res.status(500).json(error)
-
+            return res.status(500).json("Ocorreu um erro")
         }
-
     },
 
     async atualizarPsicologo(req, res) {
@@ -83,12 +82,6 @@ const controllerPsicologos = {
         const { id } = req.params;
         try {
             const { nome, email, senha, apresentacao } = req.body   
-        //     if (!nome || !email || !senha || !apresentacao) {
-        //     return res
-        //         .status(400)
-        //         .json({ error: "Você precisa passar os atributos corretamente" });
-        // }    
-        
         const atualizado = await Psicologos.update(
             {
                 nome,
@@ -106,11 +99,9 @@ const controllerPsicologos = {
         return res.status(200).json("Psicologo Atualizado");
        
         } catch (error) {
-            return res.status(500).json("error.message")
-        }
-            
+            return res.status(500).json("Ocorreu um erro")
+        }     
     }
-
 };
 
 
