@@ -14,12 +14,12 @@ const Atendimentos = db.define(
         type: DataTypes.INTEGER,
         foreignKey: true,
         field: "id_psicologos"
-    },
-    id_pacientes:{
+     },
+     id_pacientes:{
         type: DataTypes.INTEGER,
         foreignKey: true,
         field: "id_pacientes"
-    },
+     },
      data_atendimentos:{
          type: DataTypes.DATE,
          field: "data_atendimentos"
@@ -28,20 +28,7 @@ const Atendimentos = db.define(
         type: DataTypes.STRING,
         length: 300,
         field: "observacao"
-    },
-    createdAt:{
-        type: DataTypes.DATE,
-        field: "createdAt"
-    },
-    updatedAt:{
-        type: DataTypes.DATE,
-        field: "updatedAt"
-    },
-    deletedAt:{
-        type: DataTypes.DATE,
-        field: "deletedAt"
-    }
-
+     }
     },{
         tableName: "atendimentos",
         paranoid: true,

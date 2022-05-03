@@ -13,12 +13,12 @@ const authController = {
                 }
             });
             if (!userPsicologo){
-                return res.status(404).json("Usuario inexiste na base de dados");
+                return res.status(401).json("Usuário ou Senha invalido, verique e tente novamente");
             }
-             // usuario existe na base de dados
-                if (!bcryptjs.compareSync(senha, userPsicologo.senha)){
-                    return res.status(401).json("Senha Invalida");
-                }
+
+            if (!bcryptjs.compareSync(senha, userPsicologo.senha)){
+                return res.status(401).json("Usuário ou Senha invalido, verique e tente novamente");
+            }
             
             const token = jwt.sign({
                 id_psicologos:userPsicologo.id,

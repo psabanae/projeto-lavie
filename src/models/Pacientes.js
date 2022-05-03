@@ -13,7 +13,8 @@ const Pacientes = db.define(
       type: DataTypes.STRING
     },
     email: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      unique: true
     },
     nascimento: {
       type: DataTypes.DATEONLY
