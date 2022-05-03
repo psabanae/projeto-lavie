@@ -1,6 +1,7 @@
 const Psicologos = require("../models/Psicologos")
+const bcryptjs = require("bcryptjs");
+const validate = require("../validator/loginValidacao")
 
-console.log(Psicologos)
 
 const controllerPsicologos = {
     async listarPsicologos(req, res) {
@@ -49,10 +50,11 @@ const controllerPsicologos = {
                     .status(400)
                     .json({ error: "Você precisa passar os atributos corretamente" });
             }
+            const novaSenha = bcryptjs.hashSync(senha,10)
             const novoPsicologo = await Psicologos.create({
                 nome,
                 email,
-                senha,
+                senha:novaSenha,
                 apresentacao
             });
             res.status(201).json(novoPsicologo);
@@ -89,4 +91,6 @@ const controllerPsicologos = {
             
     },
 };
+
+
 module.exports = controllerPsicologos;
