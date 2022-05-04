@@ -5,6 +5,7 @@ const db = require("./database");
 const psicologosRoutes = require("./routes/psicologosRoutes");
 const pacientesRoutes = require("./routes/pacientesRoutes");
 const atendimentosRoutes = require("./routes/atendimentosRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const trataErro = require('./middleware/trataErro');
 
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(psicologosRoutes);
 app.use(pacientesRoutes);
 app.use(atendimentosRoutes);
+app.use(dashboardRoutes);
 app.use(trataErro);
 
 

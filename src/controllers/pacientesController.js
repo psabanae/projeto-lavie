@@ -111,6 +111,15 @@ const PacientesController = {
       return res.status(500).json("Ocorreu um erro");
     }
   
+  },
+
+  async contarPacientes(req, res) {
+    try {
+      const contadorPacientes = await Pacientes.count();
+      return res.status(200).json(contadorPacientes);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
   }
 
 };

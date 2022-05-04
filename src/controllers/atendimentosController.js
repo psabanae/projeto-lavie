@@ -2,6 +2,8 @@ const Atendimentos = require("../models/Atendimentos");
 
 const authController = require("../controllers/authController");
 
+const Psicologos = require("../models/Psicologos");
+
 const atendimentosController = {
   async listarAtendimentos(req, res) {
     try {
@@ -11,7 +13,7 @@ const atendimentosController = {
       return res.status(500).json(error.message);
     }
   },
-
+  
   async listarAtendimentosPorId(req, res) {
     try {
       const { id } = req.params;
@@ -57,6 +59,27 @@ const atendimentosController = {
 
     return res.status(201).json(novoAtendimento);
   },
+
+  async contarAtendimentos(req, res) {
+    try {
+      const contadorAtendimentos = await Atendimentos.count();
+      return res.status(200).json(contadorAtendimentos);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  },
+
+  async mediaAtendimentos(req, res) {
+    try {
+      const contadorAtendimentos = await Atendimentos.count();
+      const contadorPsicologos = await Psicologos.count();
+      const mediaAtPorPsi = ( contadorAtendimentos / contadorPsicologos);
+      return res.status(200).json(mediaAtPorPsi);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
 };
 
 module.exports = atendimentosController;

@@ -101,7 +101,17 @@ const controllerPsicologos = {
         } catch (error) {
             return res.status(500).json("Ocorreu um erro")
         }     
+    },
+
+    async contarPsicologos(req, res) {
+      try {
+        const contadorPsicologos = await Psicologos.count();
+        return res.status(200).json(contadorPsicologos);
+      } catch (error) {
+        return res.status(500).json(error.message);
+      }
     }
+  
 };
 
 
