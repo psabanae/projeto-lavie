@@ -23,11 +23,7 @@ const PacientesController = {
       const paciente = await Pacientes.findOne({
         where: { id_pacientes: id }
       });
-    
-      if (!paciente) {
-        return res.status(404).json("Id não encontrado");
-      }
-      
+
       return res.status(200).json(paciente);
     
     } catch (error) {
@@ -39,11 +35,7 @@ const PacientesController = {
   //Cadastra paciente
   async cadastrarPaciente(req, res) {
     const { nome, email, nascimento } = req.body;
-    // if (!nome || !email || !nascimento) {
-    //   return res
-    //     .status(400)
-    //     .json({ error: "Você precisa passar os atributos corretamente" });
-    // }
+
   try{
     const novoPaciente = await Pacientes.create({
       nome,
@@ -62,14 +54,14 @@ const PacientesController = {
   async atualizarPaciente(req, res) {
     const { id } = req.params;
     const { nome, email, nascimento } = req.body;
-
-    // if (!novo_nome || !novo_email || !nova_dataNascimento) {
-    //   return res
-    //     .status(400)
-    //     .json({ error: "Você precisa passar os atributos corretamente" });
-    // }
     
     try {
+      const validaPaciente = await Pacientes.count({
+        where: {id_pacientes: id}
+      });
+
+      if(!validaPaciente) return res.status(404).json("Id não encontrada.")
+      
       const atualizaPaciente = await Pacientes.update(
         { nome, 
           email, 
@@ -78,10 +70,6 @@ const PacientesController = {
         { where: { id_pacientes: id } }
       );
       
-      if (atualizaPaciente == 0) {
-        return res.status(400).json("Id invalido");
-      }
-
       return res.status(200).json("Paciente Atualizado");
     
     } catch (error) {
@@ -92,18 +80,21 @@ const PacientesController = {
 
   //Deleta paciente
   async deletarPaciente(req, res) {
+    const { id } = req.params;
     
     try {
-      const { id } = req.params;
+
+      const validaPaciente = await Pacientes.count({
+        where: {id_pacientes: id}
+      });
+
+      if(!validaPaciente) return res.status(404).json("Id não encontrada.");
+
       const deletaPaciente = await Pacientes.destroy({
         where: {
           id_pacientes: id
         }
       });
-      
-      if (deletaPaciente == 0){
-        return res.status(404).json("Id não encontrado");
-      } 
       
       return res.status(204).json("Paciente apagado");
     
