@@ -5,6 +5,5 @@ module.exports = validate({
         id_pacientes: Joi.number().integer().required(),
         data_atendimentos: Joi.date().iso().required(),
         observacao: Joi.string().required(),
-        //id_psicologos: Joi.number().required()
     })
 });
