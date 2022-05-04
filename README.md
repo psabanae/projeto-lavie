@@ -12,10 +12,13 @@
 
 <h1 align="center">La Vie - Saúde Mental HANDS ON WEEK </h1>
 
-O desafio deste hands on foi criar um Bandco de dados e uma API usando MySQL NodeJs e ExpressJS.
+Neste hands on fomos desafiados a criar toda a estrutura Back-end para a clínica ficticia, La Vie - Saúde Mental.
 
+Aplicamos nossos conhecimentos em banco de dados relacionais utilizando o MySQL, montado toda a estrutra e relacionamentos para armazenamento de dados do paciente, psicólogo e atendimentos.
 
-Funcionalidades a serem criadas: 
+Utilizamos também o NodeJs, ExpressJS e conhecimentos sobre API REST para criação de rotas, endpoints, validação de dados e autenticação de usuarios.
+
+## :memo: Funcionalidades a serem criadas: 
 
 1. CRUD completo para Psicólogos;
 2. Validação de login para Psicólogos;
@@ -26,16 +29,16 @@ Funcionalidades a serem criadas:
 ---
 
 
-## :eyes: Site de demonstração
+## :page_with_curl: Documentação
 
 Você pode acessar a documentação da API [aqui.](https://)
 
-## :computer: Projeto preview
+## :computer: Projeto preview utilizando o Insomnia:
 
 <img src="https" width=300> <img src="https" width=300>
 
 
-## :computer: Desenvolvedores
+## :keyboard: Desenvolvedores
 [<img src="https://avatars.githubusercontent.com/u/92588463?v=4" width=115> <br> <sub>Laura Cordeiro </sub>](https://github.com/laura-cordeiro) | [<img src="https://avatars.githubusercontent.com/u/90655270?v=4" width=115> <br> <sub>Ramon Santos</sub>](https://github.com/RamonesQ) | [<img src="https://avatars.githubusercontent.com/u/89550095?v=4" width=115> <br> <sub>Cintia Macchia </sub>](https://github.com/CintiaMacchia) | [<img src="https://avatars.githubusercontent.com/u/100443496?v=4 " width=115> <br> <sub>Paulo Sabanae</sub>](https://github.com/psabanae) | [<img src="https://avatars.githubusercontent.com/u/84211994?v=4" width=115> <br> <sub>Célio</sub>](https://github.com/csz8) 
 | :---: | :---: | :---: | :---: | :---: |
 
