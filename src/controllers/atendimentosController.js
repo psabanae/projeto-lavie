@@ -32,9 +32,9 @@ const atendimentosController = {
   },
 
   async agendarAtendimento(req, res) {
-    const IdNoToken = req.auth.id;
+    
 
-    const { id_pacientes, data_atendimentos, observacao, id_psicologos } =
+    const { id_pacientes, data_atendimentos, observacao } =
       req.body;
 
     // if (!id_pacientes || !data_atendimentos || !observacao || !id_psicologos) {
@@ -45,11 +45,14 @@ const atendimentosController = {
     //     );
     // }
 
+    const IdNoToken = req.auth.id_psicologos;
+    console.log(IdNoToken);
+
     const novoAtendimento = await Atendimentos.create({
       id_pacientes,
       data_atendimentos,
       observacao,
-      id_psicologos: IdNoToken,
+      id_psicologos: IdNoToken
     });
 
     return res.status(201).json(novoAtendimento);
