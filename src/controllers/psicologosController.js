@@ -93,7 +93,7 @@ const controllerPsicologos = {
     async contarPsicologos(req, res) {
         try {
             const contadorPsicologos = await Psicologos.count();
-            return res.status(200).json(contadorPsicologos);
+            return res.status(200).json(`Temos ${contadorPsicologos} psicólogos cadastrados`);
         } catch (error) {
             return res.status(500).json("Ocorreu um erro");
         }
