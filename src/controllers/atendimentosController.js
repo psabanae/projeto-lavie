@@ -59,7 +59,7 @@ const atendimentosController = {
   async contarAtendimentos(req, res) {
     try {
       const contadorAtendimentos = await Atendimentos.count();
-      return res.status(200).json(contadorAtendimentos);
+      return res.status(200).json(`Temos ${contadorAtendimentos} atendimentos agendados`);
     } catch (error) {
       return res.status(500).json("Erro ao tentar cadastrar");
     }
@@ -69,7 +69,7 @@ const atendimentosController = {
       const contadorAtendimentos = await Atendimentos.count();
       const contadorPsicologos = await Psicologos.count();
       const mediaAtPorPsi = (Math.round(contadorAtendimentos / contadorPsicologos));
-      return res.status(200).json(mediaAtPorPsi);
+      return res.status(200).json(`Temos em média ${mediaAtPorPsi} atendimentos por psicólogos`);
     } catch (error) {
       return res.status(500).json("Ocorreu um erro");
     }
