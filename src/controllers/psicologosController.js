@@ -43,7 +43,7 @@ const controllerPsicologos = {
                 }
             });
             if (!psicologos) return res.status(404).json("Id não encontrado");
-            return res.status(204);
+            return res.status(204).json("Psicologo Apagado");
         } catch (error) {
             return res.status(500).json("Erro ao tentar excluir")
         };

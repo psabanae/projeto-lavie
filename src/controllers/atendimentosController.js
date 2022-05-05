@@ -68,7 +68,7 @@ const atendimentosController = {
     try {
       const contadorAtendimentos = await Atendimentos.count();
       const contadorPsicologos = await Psicologos.count();
-      const mediaAtPorPsi = ( contadorAtendimentos / contadorPsicologos);
+      const mediaAtPorPsi = (Math.round(contadorAtendimentos / contadorPsicologos));
       return res.status(200).json(mediaAtPorPsi);
     } catch (error) {
       return res.status(500).json("Ocorreu um erro");
