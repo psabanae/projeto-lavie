@@ -12,26 +12,37 @@
 
 <h1 align="center">La Vie - Saúde Mental HANDS ON WEEK </h1>
 
-Neste hands on fomos desafiados a criar toda a estrutura Back-end para a clínica ficticia, La Vie - Saúde Mental.
+Neste hands on fomos desafiados a criar uma API para a clínica ficticia, La Vie - Saúde Mental que permita criar registros de psicólogos, pacientes e prontuários. Também ficamos responsáveis por criar o banco de dados que inclui: Criação do DER e do script SQL que gera o banco.
 
-Aplicamos nossos conhecimentos em banco de dados relacionais utilizando o MySQL, montado toda a estrutra e relacionamentos para armazenamento de dados do paciente, psicólogo e atendimentos.
+Recebemos o prazo de 6 dias para a entrega do desafio.
 
-Utilizamos também o NodeJs, ExpressJS e conhecimentos sobre API REST para criação de rotas, endpoints, validação de dados e autenticação de usuarios.
+Aplicamos nossos conhecimentos em banco de dados relacionais utilizando o MySQL, API REST para criação de rotas, endpoints, validação de dados e autenticação de usuarios utilizando NodeJs e ExpressJS.
 
-## :memo: Funcionalidades a serem criadas: 
+Em nosso projeto adotamos: 
 
-1. CRUD completo para Psicólogos;
-2. Validação de login para Psicólogos;
+ - Boas práticas em relação ao uso de JS;
+ - Boa organização do projeto usando os princípios do MVC;
+ - Validação dos dados que entram na api
+ - Feedback de erros para os usuários
+ - Divisão de tarefas entre os membros da equipe seguindo os princípios da Metodologia Ágil Scrum
+ - Boas práticas de versionamento de código com Git
+
+
+## :memo: Funcionalidades criadas: 
+
+1. Validação de login para Psicólogos;
+2. CRUD completo para Psicólogos;
 3. CRUD completo para Pacientes;
 4. CRUD completo para agendamento;
 5. Montar a documentação da API;
+6. Dashboard para visualização de número de pacientes, psicologos e atendimentos
 
 ---
 
 
 ## :page_with_curl: Documentação
 
-Você pode acessar a documentação da API [aqui.](https://)
+Você pode acessar a documentação da API [aqui.](https://projeto-lavie-theta.vercel.app/)
 
 ## :computer: Projeto preview utilizando o Insomnia:
 
@@ -39,7 +50,7 @@ Você pode acessar a documentação da API [aqui.](https://)
 
 
 ## :keyboard: Desenvolvedores
-[<img src="https://avatars.githubusercontent.com/u/92588463?v=4" width=115> <br> <sub>Laura Cordeiro </sub>](https://github.com/laura-cordeiro) | [<img src="https://avatars.githubusercontent.com/u/90655270?v=4" width=115> <br> <sub>Ramon Santos</sub>](https://github.com/RamonesQ) | [<img src="https://avatars.githubusercontent.com/u/89550095?v=4" width=115> <br> <sub>Cintia Macchia </sub>](https://github.com/CintiaMacchia) | [<img src="https://avatars.githubusercontent.com/u/100443496?v=4 " width=115> <br> <sub>Paulo Sabanae</sub>](https://github.com/psabanae) | [<img src="https://avatars.githubusercontent.com/u/84211994?v=4" width=115> <br> <sub>Célio</sub>](https://github.com/csz8) 
+[<img src="https://avatars.githubusercontent.com/u/92588463?v=4" width=115> <br> <sub>Laura Cordeiro </sub>](https://github.com/laura-cordeiro) | [<img src="https://avatars.githubusercontent.com/u/90655270?v=4" width=115> <br> <sub>Ramon Santos</sub>](https://github.com/RamonesQ) | [<img src="https://avatars.githubusercontent.com/u/100443496?v=4 " width=115> <br> <sub>Paulo Sabanae</sub>](https://github.com/psabanae) | [<img src="https://avatars.githubusercontent.com/u/84211994?v=4" width=115> <br> <sub>Célio</sub>](https://github.com/csz8) | [<img src="https://avatars.githubusercontent.com/u/89550095?v=4" width=115> <br> <sub>Cintia Macchia </sub>](https://github.com/CintiaMacchia)
 | :---: | :---: | :---: | :---: | :---: |
 
 
