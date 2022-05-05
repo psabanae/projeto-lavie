@@ -1,4 +1,4 @@
-const Pacientes = require("../models/Pacientes");
+const { Pacientes } = require("../models");
 
 const PacientesController = {
 
@@ -20,6 +20,10 @@ const PacientesController = {
   async listarPaciente(req, res) {
     const { id } = req.params;
     try {
+        const validaPaciente = await Pacientes.count({
+          where: {id_pacientes: id}
+        });
+        if(!validaPaciente) return res.status(404).json("Id não encontrada.");
       const paciente = await Pacientes.findOne({
         where: { id_pacientes: id }
       });
@@ -48,7 +52,7 @@ const PacientesController = {
       const validaPaciente = await Pacientes.count({
         where: {id_pacientes: id}
       });
-      if(!validaPaciente) return res.status(404).json("Id não encontrada.")
+      if(!validaPaciente) return res.status(404).json("Id não encontrada.");
       const atualizaPaciente = await Pacientes.update(
         { nome, 
           email, 

@@ -1,5 +1,4 @@
-const Atendimentos = require("../models/Atendimentos");
-const Psicologos = require("../models/Psicologos");
+const { Atendimentos, Psicologos, Pacientes } = require("../models");
 
 const atendimentosController = {
   async listarAtendimentos(req, res) {
@@ -10,6 +9,8 @@ const atendimentosController = {
             let filter = {
                 limit,
                 offset,
+                include: [{model: Pacientes, attributes: ["id_pacientes", "nome"]},
+                {model: Psicologos, attributes: ["id_psicologos", "nome"]}]
             };
       const listaDeAtendimentos = await Atendimentos.findAll(filter);
       return res.status(200).json(listaDeAtendimentos);
@@ -21,6 +22,9 @@ const atendimentosController = {
     try {
       const { id } = req.params;
       const listaDeAtendimentos = await Atendimentos.findOne({
+        include: [{model: Pacientes, attributes: ["id_pacientes", "nome"]},
+                  {model: Psicologos, attributes: ["id_psicologos", "nome"]}],
+        
         where: {
           id_atendimentos: id,
         },

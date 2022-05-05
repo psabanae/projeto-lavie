@@ -1,4 +1,4 @@
-const Psicologos = require("../models/Psicologos")
+const { Psicologos } = require("../models");
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const secret = require("../config/secret")
