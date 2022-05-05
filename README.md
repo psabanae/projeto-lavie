@@ -42,7 +42,7 @@ Em nosso projeto adotamos:
 
 ## :page_with_curl: Documentação
 
-Você pode acessar a documentação da API [aqui.](https://projeto-lavie-theta.vercel.app/)
+Você pode acessar a documentação da API [aqui.](https://projeto-lavie.vercel.app/)
 
 ## :computer: Projeto preview utilizando o Insomnia:
 
